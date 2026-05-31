@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Météo 2025–2026 · France</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F7F4EF;
+      --ink:     #1A1814;
+      --muted:   #7A7468;
+      --accent:  #2D5BE3;
+      --accent2: #E84B3A;
+      --border:  #DDD9D0;
+      --card-bg: #FFFFFF;
+      --radius:  12px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .logo-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent2);
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── Page content ────────────────────────── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2.5rem 3rem;
+    }
+
+    /* ── Hero ────────────────────────────────── */
+    .hero {
+      padding: 4rem 0 2.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent2);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ── Controls strip ──────────────────────── */
+    .controls-strip {
+      margin-bottom: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .controls-strip > * {
+      flex: 1 1 180px;
+    }
+
+    .control-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    /* ── Charts stack ────────────────────────── */
+    .charts-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .chart-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.25rem 1rem;
+      overflow: hidden;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .chart-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .chart-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chart-label::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ── Observable inspector overrides ─────── */
+    .observablehq { font-family: 'DM Sans', sans-serif !important; }
+    .observablehq--inspect { display: none !important; }
+
+    /* ── Footer ──────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-credit {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-credit a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-credit a:hover { text-decoration: underline; }
+
+    .footer-tag {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      header { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .page-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+      footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      Météo en France
+    </div>
+    <span class="badge">2025 – 2026</span>
+  </header>
+
+  <div class="page-wrap">
+
+    <section class="hero">
+      <p class="hero-eyebrow">Données météorologiques</p>
+      <h1>Observations<br><em>stations météorologiques</em></h1>
+      <p>Sélectionnez un département et une station pour visualiser les données de température, précipitations et vent sur la période 2025–2026 (jusqu’à J-2)..</p>
+    </section>
+
+    <div class="controls-strip">
+      <div>
+        <div class="control-label">Département</div>
+        <div id="observablehq-viewof-dept-50f704cd"></div>
+      </div>
+      <div>
+        <div class="control-label">Station</div>
+        <div id="observablehq-viewof-name-50f704cd"></div>
+      </div>
+      <div>
+        <div class="control-label">Période</div>
+        <div id="observablehq-viewof-periode-50f704cd"></div>
+      </div>
+    </div>
+
+    <div class="charts-stack">
+
+      <div class="chart-card">
+        <div class="chart-label">Température</div>
+        <div id="observablehq-chart_t-50f704cd"></div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-label">Précipitations cumulées</div>
+        <div id="observablehq-chart_p_cum-50f704cd"></div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-label">Durée des précipitations</div>
+        <div id="observablehq-chart_p_duree-50f704cd"></div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-label">Rose des vents</div>
+        <div id="observablehq-chart_vent-50f704cd"></div>
+      </div>
+
+    </div>
+
+  </div><!-- /.page-wrap -->
+
+  <footer>
+    <p class="footer-credit">
+      &nbsp;: <a href="https://observablehq.com/d/c3acd03d78aaef15@1035" target="_blank" rel="noopener">Réalisation Alain Ottenheimer - mai 2026</a>
+    </p>
+    <span class="footer-tag">Données Météo-France</span>
+  </footer>
+
+  <script type="module">
+    import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+   import define from "https://api.observablehq.com/d/c3acd03d78aaef15@1046.js?v=4";
+
+    new Runtime().module(define, name => {
+      if (name === "viewof dept")    return new Inspector(document.querySelector("#observablehq-viewof-dept-50f704cd"));
+      if (name === "viewof name")    return new Inspector(document.querySelector("#observablehq-viewof-name-50f704cd"));
+      if (name === "viewof periode") return new Inspector(document.querySelector("#observablehq-viewof-periode-50f704cd"));
+      if (name === "chart_t")        return new Inspector(document.querySelector("#observablehq-chart_t-50f704cd"));
+      if (name === "chart_p_cum")    return new Inspector(document.querySelector("#observablehq-chart_p_cum-50f704cd"));
+      if (name === "chart_p_duree")  return new Inspector(document.querySelector("#observablehq-chart_p_duree-50f704cd"));
+      if (name === "chart_vent")     return new Inspector(document.querySelector("#observablehq-chart_vent-50f704cd"));
+      return [
+        "liste_stations","selected_station","data_vent","selected_url_station",
+        "results","temp1","temp2","data","createTempPlot","createTempPlotLisse",
+        "createRainPlot","createDurationPlot"
+      ].includes(name);
+      
+    });
+  </script>
+
+</body>
+</html>
