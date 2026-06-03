@@ -239,15 +239,15 @@
     <div class="controls-strip">
       <div>
         <div class="control-label">Département</div>
-        <div id="observablehq-viewof-dept-755aecc0"></div>
+        <div id="observablehq-viewof-dept-13a759bb"></div>
       </div>
       <div>
         <div class="control-label">Station</div>
-        <div id="observablehq-viewof-name-755aecc0"></div>
+        <div id="observablehq-viewof-name-13a759bb"></div>
       </div>
       <div>
         <div class="control-label">Période</div>
-        <div id="observablehq-viewof-periode-755aecc0"></div>
+        <div id="observablehq-viewof-periode-13a759bb"></div>
       </div>
     </div>
 
@@ -255,22 +255,22 @@
 
       <div class="chart-card">
         <div class="chart-label">Température</div>
-        <div id="observablehq-chart_t-755aecc0"></div>
+        <div id="observablehq-chart_t-13a759bb"></div>
       </div>
 
       <div class="chart-card">
         <div class="chart-label">Précipitations cumulées</div>
-        <div id="observablehq-chart_p_cum-755aecc0"></div>
+        <div id="observablehq-chart_p_cum-13a759bb"></div>
       </div>
 
       <div class="chart-card">
         <div class="chart-label">Durée des précipitations</div>
-        <div id="observablehq-chart_p_duree-755aecc0"></div>
+        <div id="observablehq-chart_p_duree-13a759bb"></div>
       </div>
 
       <div class="chart-card">
         <div class="chart-label">Rose des vents</div>
-        <div id="observablehq-chart_vent-755aecc0"></div>
+        <div id="observablehq-chart_vent-13a759bb"></div>
       </div>
 
     </div>
@@ -286,17 +286,18 @@
 
   <script type="module">
   import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-import define from "https://api.observablehq.com/d/c3acd03d78aaef15.js?v=4";
+import define from "https://api.observablehq.com/d/c3acd03d78aaef15@1240.js?v=4";
+
 
 
     new Runtime().module(define, name => {
-      if (name === "viewof dept")    return new Inspector(document.querySelector("#observablehq-viewof-dept-755aecc0"));
-      if (name === "viewof name")    return new Inspector(document.querySelector("#observablehq-viewof-name-755aecc0"));
-      if (name === "viewof periode") return new Inspector(document.querySelector("#observablehq-viewof-periode-755aecc0"));
-      if (name === "chart_t")        return new Inspector(document.querySelector("#observablehq-chart_t-755aecc0"));
-      if (name === "chart_p_cum")    return new Inspector(document.querySelector("#observablehq-chart_p_cum-755aecc0"));
-      if (name === "chart_p_duree")  return new Inspector(document.querySelector("#observablehq-chart_p_duree-755aecc0"));
-      if (name === "chart_vent")     return new Inspector(document.querySelector("#observablehq-chart_vent-755aecc0"));
+      if (name === "viewof dept")    return new Inspector(document.querySelector("#observablehq-viewof-dept-13a759bb"));
+      if (name === "viewof name")    return new Inspector(document.querySelector("#observablehq-viewof-name-13a759bb"));
+      if (name === "viewof periode") return new Inspector(document.querySelector("#observablehq-viewof-periode-13a759bb"));
+      if (name === "chart_t")        return new Inspector(document.querySelector("#observablehq-chart_t-13a759bb"));
+      if (name === "chart_p_cum")    return new Inspector(document.querySelector("#observablehq-chart_p_cum-13a759bb"));
+      if (name === "chart_p_duree")  return new Inspector(document.querySelector("#observablehq-chart_p_duree-13a759bb"));
+      if (name === "chart_vent")     return new Inspector(document.querySelector("#observablehq-chart_vent-13a759bb"));
       return [
         "liste_stations","selected_station","data_vent","selected_url_station",
         "results","temp1","temp2","data","createTempPlot","createTempPlotLisse",
