@@ -49,34 +49,35 @@
 </head>
 <body>
   <h1>Analyse financière des communes (2)</h1>
-  <p class="subtitle">Comparaison des indicateurs d'analyse financière issus des balances comptables des communes des communautés de communes des départements 04, 25, 26, 29, 31 et 70, sur la période 2011 à 2024.</p>
+  <p class="subtitle">Comparaison des indicateurs d'analyse financière issus des balances comptables des communes des communautés de communes des départements 04, 07, 25, 26, 29, 31 et 70, sur la période 2011 à 2024.</p>
 
 
 
   
-    <div id="observablehq-viewof-selected_dept-04b07856"></div>
-    <div id="observablehq-viewof-selected_cc-04b07856"></div>
-    <div id="observablehq-viewof-selected_indicator-04b07856"></div>
+    <div id="observablehq-viewof-selected_dept-ddaab2cd"></div>
+    <div id="observablehq-viewof-selected_cc-ddaab2cd"></div>
+    <div id="observablehq-viewof-selected_indicator-ddaab2cd"></div>
  <br>
-  <div id="observablehq-indicateur_def-04b07856"></div>
-  <div id="observablehq-chart-04b07856"></div>
+  <div id="observablehq-indicateur_def-ddaab2cd"></div>
+  <div id="observablehq-chart-ddaab2cd"></div>
 
   <div class="buttons">
-    <div id="observablehq-dl_button-04b07856"></div>
+    <div id="observablehq-dl_button-ddaab2cd"></div>
   </div>
 
   <p class="credit">Credit : <a href="https://observablehq.com/d/f423a7a552c7fae7@1259">Analyse financière des communes (partie 1) by Alain Ottenheimer</a></p>
 
   <script type="module">
     import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-    import define from "https://api.observablehq.com/d/f423a7a552c7fae7@1259.js?v=4";
+import define from "https://api.observablehq.com/d/f423a7a552c7fae7@1263.js?v=4";
+
     new Runtime().module(define, name => {
-      if (name === "indicateur_def") return new Inspector(document.querySelector("#observablehq-indicateur_def-04b07856"));
-      if (name === "viewof selected_dept") return new Inspector(document.querySelector("#observablehq-viewof-selected_dept-04b07856"));
-      if (name === "viewof selected_cc") return new Inspector(document.querySelector("#observablehq-viewof-selected_cc-04b07856"));
-      if (name === "viewof selected_indicator") return new Inspector(document.querySelector("#observablehq-viewof-selected_indicator-04b07856"));
-      if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-04b07856"));
-      if (name === "dl_button") return new Inspector(document.querySelector("#observablehq-dl_button-04b07856"));
+      if (name === "indicateur_def") return new Inspector(document.querySelector("#observablehq-indicateur_def-ddaab2cd"));
+      if (name === "viewof selected_dept") return new Inspector(document.querySelector("#observablehq-viewof-selected_dept-ddaab2cd"));
+      if (name === "viewof selected_cc") return new Inspector(document.querySelector("#observablehq-viewof-selected_cc-ddaab2cd"));
+      if (name === "viewof selected_indicator") return new Inspector(document.querySelector("#observablehq-viewof-selected_indicator-ddaab2cd"));
+      if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-ddaab2cd"));
+      if (name === "dl_button") return new Inspector(document.querySelector("#observablehq-dl_button-ddaab2cd"));
       return ["liste_intercommunalites","selected_url_dept","extraction_data_commune_intercommunalite","communes_intercommunalite","plot_header","data_commune_intercommunalite","population","data_commune_intercommunalite_enriched","population_extended","indicateurs_commune_intercommunalite","indicateurs_commune_intercommunalite_hab","viewof selection"].includes(name);
     });
   </script>

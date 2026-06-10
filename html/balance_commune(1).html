@@ -31,6 +31,18 @@
       gap: 16px;
       margin-bottom: 24px;
     }
+    .definition {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding: 12px 16px;
+      background: #f0ece4;
+      border-left: 3px solid #aaa;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #444;
+    }
     .buttons {
       display: flex;
       gap: 12px;
@@ -41,34 +53,53 @@
       font-size: 12px;
       color: #888;
       margin-top: 32px;
+      border-top: 1px solid #ddd;
+      padding-top: 12px;
     }
     p.credit a {
       color: #2b6cb0;
+      text-decoration: none;
+    }
+    p.credit a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <h1>Analyse financière des communes (1)</h1>
   <p class="subtitle">Visualisation des indicateurs financiers issus des balances comptables des communes des départements 04, 25, 26, 29, 31 et 70, sur la période 2011 à 2024.</p>
+
   <div class="controls">
-    <div id="observablehq-viewof-selected_dept-fd416df3"></div>
-    <div id="observablehq-viewof-selected_commune-fd416df3"></div>
+    <div id="observablehq-viewof-selected_dept-81e84d73"></div>
+    <div id="observablehq-viewof-selected_commune-81e84d73"></div>
   </div>
-  <div id="observablehq-chart-fd416df3"></div>
+
+  <div class="definition">
+    <div id="observablehq-compte_def-81e84d73"></div>
+    <div id="observablehq-indicateur_def-81e84d73"></div>
+  </div>
+
+  <div id="observablehq-chart-81e84d73"></div>
+
   <div class="buttons">
-    <div id="observablehq-indicateurs_commune_intercommunalite_hab_dl_button-fd416df3"></div>
-    <div id="observablehq-indicateurs_commune_intercommunalite_hab_dl_button1-fd416df3"></div>
+    <div id="observablehq-indicateurs_commune_intercommunalite_hab_dl_button-81e84d73"></div>
+    <div id="observablehq-indicateurs_commune_intercommunalite_hab_dl_button1-81e84d73"></div>
   </div>
-  <p class="credit">Credit : <a href="https://observablehq.com/d/4077f6f618f0fa79@1148">Analyse financière des communes (partie 2) by Alain Ottenheimer</a></p>
+
+  <p class="credit">Source : <a href="https://observablehq.com/d/4077f6f618f0fa79@1153">Analyse financière des communes (partie 1) by Alain Ottenheimer</a></p>
+
   <script type="module">
     import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-    import define from "https://api.observablehq.com/d/4077f6f618f0fa79@1148.js?v=4";
+import define from "https://api.observablehq.com/d/4077f6f618f0fa79@1161.js?v=4";
+
     new Runtime().module(define, name => {
-      if (name === "viewof selected_dept") return new Inspector(document.querySelector("#observablehq-viewof-selected_dept-fd416df3"));
-      if (name === "viewof selected_commune") return new Inspector(document.querySelector("#observablehq-viewof-selected_commune-fd416df3"));
-      if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-fd416df3"));
-      if (name === "indicateurs_commune_intercommunalite_hab_dl_button") return new Inspector(document.querySelector("#observablehq-indicateurs_commune_intercommunalite_hab_dl_button-fd416df3"));
-      if (name === "indicateurs_commune_intercommunalite_hab_dl_button1") return new Inspector(document.querySelector("#observablehq-indicateurs_commune_intercommunalite_hab_dl_button1-fd416df3"));
+      if (name === "viewof selected_dept") return new Inspector(document.querySelector("#observablehq-viewof-selected_dept-81e84d73"));
+      if (name === "viewof selected_commune") return new Inspector(document.querySelector("#observablehq-viewof-selected_commune-81e84d73"));
+      if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-81e84d73"));
+      if (name === "indicateurs_commune_intercommunalite_hab_dl_button") return new Inspector(document.querySelector("#observablehq-indicateurs_commune_intercommunalite_hab_dl_button-81e84d73"));
+      if (name === "indicateurs_commune_intercommunalite_hab_dl_button1") return new Inspector(document.querySelector("#observablehq-indicateurs_commune_intercommunalite_hab_dl_button1-81e84d73"));
+      if (name === "compte_def") return new Inspector(document.querySelector("#observablehq-compte_def-81e84d73"));
+      if (name === "indicateur_def") return new Inspector(document.querySelector("#observablehq-indicateur_def-81e84d73"));
       return ["liste_communes","selected_url_dept","extraction_data_commune","selected_commune_siren","data_selected_commune","data_selected_commune_enriched","population","viewof selection","indicateurs_commune","population_extended","indicateurs_commune_intercommunalite_hab","viewof selection_indicateurs"].includes(name);
     });
   </script>
