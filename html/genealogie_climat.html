@@ -332,9 +332,9 @@
     <div class="graph-wrapper">
       <div class="panel-slider">
         <p class="panel-slider-label">Dérouler le temps</p>
-        <div id="observablehq-viewof-range-cd70dd7d"></div>
+        <div id="observablehq-viewof-range-86808304"></div>
       </div>
-      <div id="observablehq-chart_CO2-cd70dd7d"></div>
+      <div id="observablehq-chart_CO2-86808304"></div>
     </div>
   </div>
 
@@ -354,7 +354,7 @@
     </div>
 
     <div class="graph-wrapper">
-      <div id="observablehq-Chart_temperature-cd70dd7d"></div>
+      <div id="observablehq-Chart_temperature-86808304"></div>
     </div>
   </div>
 
@@ -372,7 +372,7 @@
     </div>
 
     <div class="graph-wrapper">
-      <div id="observablehq-chart_warming_strips-cd70dd7d"></div> 
+      <div id="observablehq-chart_warming_strips-86808304"></div> 
     </div>
   </div> 
 
@@ -390,7 +390,7 @@
     </div>
 
     <div class="graph-wrapper">
-      <div id="observablehq-chart_dodge-cd70dd7d"></div>
+      <div id="observablehq-chart_dodge-86808304"></div>
     </div>
   </div>
 
@@ -400,8 +400,8 @@
 <div id="sources-bar">
   <span class="src-label">Sources</span>
   <div class="src-items">
-    <div id="observablehq-CO2_source-cd70dd7d"></div>
-    <div id="observablehq-Temp_source-cd70dd7d"></div>
+    <div id="observablehq-CO2_source-86808304"></div>
+    <div id="observablehq-Temp_source-86808304"></div>
   </div>
 </div>
 
@@ -413,17 +413,17 @@
 <!-- ── OBSERVABLE RUNTIME & INTERACTION ───────────────── -->
 <script type="module">
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-import define from "https://api.observablehq.com/d/f43911b2f8adf4d9@595.js?v=4";
+import define from "https://api.observablehq.com/d/f43911b2f8adf4d9@610.js?v=4";
 
 
 new Runtime().module(define, name => {
-  if (name === "CO2_source")          return new Inspector(document.querySelector("#observablehq-CO2_source-cd70dd7d"));
-  if (name === "Temp_source")         return new Inspector(document.querySelector("#observablehq-Temp_source-cd70dd7d"));
-  if (name === "viewof range")        return new Inspector(document.querySelector("#observablehq-viewof-range-cd70dd7d"));
-  if (name === "chart_CO2")           return new Inspector(document.querySelector("#observablehq-chart_CO2-cd70dd7d"));
-  if (name === "Chart_temperature")   return new Inspector(document.querySelector("#observablehq-Chart_temperature-cd70dd7d"));
-  if (name === "chart_warming_strips") return new Inspector(document.querySelector("#observablehq-chart_warming_strips-cd70dd7d"));
-  if (name === "chart_dodge")        return new Inspector(document.querySelector("#observablehq-chart_dodge-cd70dd7d"));
+  if (name === "CO2_source")          return new Inspector(document.querySelector("#observablehq-CO2_source-86808304"));
+  if (name === "Temp_source")         return new Inspector(document.querySelector("#observablehq-Temp_source-86808304"));
+  if (name === "viewof range")        return new Inspector(document.querySelector("#observablehq-viewof-range-86808304"));
+  if (name === "chart_CO2")           return new Inspector(document.querySelector("#observablehq-chart_CO2-86808304"));
+  if (name === "Chart_temperature")   return new Inspector(document.querySelector("#observablehq-Chart_temperature-86808304"));
+  if (name === "chart_warming_strips") return new Inspector(document.querySelector("#observablehq-chart_warming_strips-86808304"));
+  if (name === "chart_dodge")        return new Inspector(document.querySelector("#observablehq-chart_dodge-86808304"));
   return ["plot_header_CO2"].includes(name);
 });
 
