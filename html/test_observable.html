@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test — Countries Population 1950–2025</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+    .observablehq--inspect { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>Test embed — Countries Population from 1950 to 2025</h1>
+
+  <div id="observablehq-viewof-selected_year-8e515b71"></div>
+  <div id="observablehq-viewof-country-8e515b71"></div>
+  <div id="observablehq-Pyramid_country-8e515b71"></div>
+  <div id="observablehq-chart__-8e515b71"></div>
+
+  <p>Credit: <a href="https://observablehq.com/d/34eb221a63ede743@7611">Countries Population from 1950 to 2025 by Alain Ottenheimer</a></p>
+
+  <script type="module">
+    import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+    import define from "https://api.observablehq.com/d/34eb221a63ede743@7611.js?v=4";
+
+    new Runtime().module(define, name => {
+      if (name === "viewof selected_year") return new Inspector(document.querySelector("#observablehq-viewof-selected_year-8e515b71"));
+      if (name === "viewof country")       return new Inspector(document.querySelector("#observablehq-viewof-country-8e515b71"));
+      if (name === "Pyramid_country")      return new Inspector(document.querySelector("#observablehq-Pyramid_country-8e515b71"));
+      if (name === "chart__")              return new Inspector(document.querySelector("#observablehq-chart__-8e515b71"));
+      return ["genealogieMerged_temp","genealogieMerged_temp_co2","un_pop_country_an_temp",
+              "un_pop_country_an","total_H","total_F","total_pop","mediane_H","mediane_F",
+              "selected_country","data_selected_country","un_pop","year_list",
+              "max_pop","max_date","min_date"].includes(name);
+    });
+  </script>
+
+</body>
+</html>
