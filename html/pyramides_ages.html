@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pyramides des âges · 1950–2025</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #fdfdfd;
+      color: #2c2c2c;
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 2rem 2rem 1.2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #41ab5d;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    header p {
+      font-size: 0.88rem;
+      color: #777;
+      font-family: sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    /* Masquer les valeurs brutes des cellules de données */
+    .observablehq--inspect { display: none; }
+
+    footer {
+      border-top: 1px solid #e0e0e0;
+      padding: 1rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      font-family: sans-serif;
+      font-size: 0.78rem;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #41ab5d;
+    }
+
+    @media (max-width: 600px) {
+      header, main, footer { padding-left: 1rem; padding-right: 1rem; }
+      header h1 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1> Pyramides des âges · 1950–2025 de 295 pays ou régions du monde</h1>
+    <p>
+Et si les warming stripes coloraient non plus le temps, mais les générations ? 
+C'est le parti pris de cette visualisation : chaque tranche d'âge hérite de la couleur du climat de sa naissance — 
+du bleu des années stables au rouge des décennies de dérèglement. Une façon de redonner leur charge émotionnelle à des bandes devenues trop familières.
+    </p>
+  </header>
+
+  <main>
+    <div id="observablehq-viewof-selected_year-0817fefd"></div>
+    <div id="observablehq-viewof-country-0817fefd"></div>
+    <div id="observablehq-Pyramid_country-0817fefd"></div>
+    <div id="observablehq-animation_co2-0817fefd"></div>
+    <div id="observablehq-embed-0817fefd"></div>
+    <div id="observablehq-Sources-0817fefd"></div>
+  </main>
+
+  <footer>
+    <p>
+      Credit :
+      <a href="https://observablehq.com/d/34eb221a63ede743@7676">
+        Pyramides des âges · 1950–2025 — Alain Ottenheimer
+      </a>
+    </p>
+  </footer>
+
+  <script type="module">
+    import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+    import define from "https://api.observablehq.com/d/34eb221a63ede743@7676.js?v=4";
+
+    new Runtime().module(define, name => {
+      if (name === "Sources")             return new Inspector(document.querySelector("#observablehq-Sources-0817fefd"));
+      if (name === "viewof selected_year") return new Inspector(document.querySelector("#observablehq-viewof-selected_year-0817fefd"));
+      if (name === "viewof country")      return new Inspector(document.querySelector("#observablehq-viewof-country-0817fefd"));
+      if (name === "Pyramid_country")     return new Inspector(document.querySelector("#observablehq-Pyramid_country-0817fefd"));
+      if (name === "animation_co2")       return new Inspector(document.querySelector("#observablehq-animation_co2-0817fefd"));
+      if (name === "embed")               return new Inspector(document.querySelector("#observablehq-embed-0817fefd"));
+      return ["genealogieMerged_temp","genealogieMerged_temp_co2","un_pop_country_an_temp",
+              "un_pop_country_an","total_H","total_F","total_pop","mediane_H","mediane_F",
+              "selected_country","data_selected_country","un_pop","year_list",
+              "max_pop","max_date","min_date"].includes(name);
+    });
+  </script>
+
+</body>
+</html>
