@@ -102,88 +102,90 @@
 <div class="page">
 
   <header>
-    <div id="observablehq-titre_-e78d5fed"></div>
-    <p>Visualisation des données météorologiques historiques des stations françaises — Météo-France / data.gouv.fr</p>
+<div style="color:#41ab5d; font-size:2.1rem; font-weight:600; line-height:0.9;">
+  Météo France
+</div>
+<div style="font-size:1.15rem; font-weight:400; line-height:1.2; font-style:italic;">
+  Visualisation des données météorologiques d'avant 1950 à aujourd'hui.
+</div>
+<div style="margin-top:12px; line-height:1.5;">
+  <div>• <strong>Vue longue période</strong> — évolution des températures minimales et maximales, du nombre annuel de jours &gt; 32 °C, &gt; 21 °C et de jours de gel (&lt; 0 °C).</div>
+  <div>• <strong>Vue annuelle</strong> — températures quotidiennes minimales et maximales, cumul et durée mensuels des précipitations, direction et force des vents.</div>
+  
+ </div>
+
   </header>
 
   <div class="controls">
-    <div id="observablehq-viewof-dept_-e78d5fed"></div>
-    <div id="observablehq-viewof-name_-e78d5fed"></div>
+    <div id="observablehq-viewof-dept_-601aa7e4"></div>
+    <div id="observablehq-viewof-name_-601aa7e4"></div>
   </div>
 
   <div class="block">
     <p class="block-title">Températures min / max</p>
-    <div id="observablehq-chart_temp_min_max-e78d5fed"></div>
+    <div id="observablehq-chart_temp_min_max-601aa7e4"></div>
   </div>
 
   <div class="controls">
-    <div id="observablehq-viewof-temperature-e78d5fed"></div>
+    <div id="observablehq-viewof-temperature-601aa7e4"></div>
   </div>
 
   <div class="block">
-    <div id="observablehq-chart_temp_nbjours-e78d5fed"></div>
+    <div id="observablehq-chart_temp_nbjours-601aa7e4"></div>
   </div>
 
   <div class="block">
-    <div id="observablehq-chart_p_cum_year_-e78d5fed"></div>
+    <div id="observablehq-chart_p_cum_year-601aa7e4"></div>
   </div>
 
   <div class="controls">
-    <div id="observablehq-viewof-selected_year-e78d5fed"></div>
+    <div id="observablehq-viewof-selected_year-601aa7e4"></div>
   </div>
 
   <div class="block">
     <p class="block-title">Température — année sélectionnée</p>
-    <div id="observablehq-chart_temp_year-e78d5fed"></div>
+    <div id="observablehq-chart_temp_year-601aa7e4"></div>
   </div>
 
   <div class="block">
     <p class="block-title">Précipitations cumulées</p>
-    <div id="observablehq-chart_p_cum_-e78d5fed"></div>
+    <div id="observablehq-chart_p_cum-601aa7e4"></div>
   </div>
 
   <div class="block">
     <p class="block-title">Durée des précipitations</p>
-    <div id="observablehq-chart_p_duree1-e78d5fed"></div>
+    <div id="observablehq-chart_p_duree-601aa7e4"></div>
   </div>
 
   <div class="block">
     <p class="block-title">Rose des vents</p>
-    <div id="observablehq-chart_vent_year-e78d5fed"></div>
+    <div id="observablehq-chart_vent_year-601aa7e4"></div>
   </div>
 
   <div class="controls">
-    <div id="observablehq-viewof-selected_T_variable-e78d5fed"></div>
+    <div id="observablehq-varaible_meteo-601aa7e4"></div>
   </div>
-
-  <div class="block">
-    <p class="block-title">Carte de chaleur</p>
-    <div id="observablehq-chart_heatmap-e78d5fed"></div>
-  </div>
-
-  <p class="credit">Credit: <a href="https://observablehq.com/d/f37454a7593791ae@2076" target="_blank" rel="noopener">Untitled by Alain Ottenheimer</a></p>
+  <p class="credit">Credit: <a href="https://observablehq.com/d/f37454a7593791ae@2082" target="_blank" rel="noopener">Alain Ottenheimer</a> - Source <a href="https://meteofrance.fr/">Météo-France</a></p>
 
 </div>
 
 <script type="module">
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-import define from "https://api.observablehq.com/d/f37454a7593791ae@2076.js?v=4";
+import define from "https://api.observablehq.com/d/f37454a7593791ae@2083.js?v=4";
 new Runtime().module(define, name => {
-  if (name === "titre_") return new Inspector(document.querySelector("#observablehq-titre_-e78d5fed"));
-  if (name === "viewof dept_") return new Inspector(document.querySelector("#observablehq-viewof-dept_-e78d5fed"));
-  if (name === "viewof name_") return new Inspector(document.querySelector("#observablehq-viewof-name_-e78d5fed"));
-  if (name === "chart_temp_min_max") return new Inspector(document.querySelector("#observablehq-chart_temp_min_max-e78d5fed"));
-  if (name === "viewof temperature") return new Inspector(document.querySelector("#observablehq-viewof-temperature-e78d5fed"));
-  if (name === "chart_temp_nbjours") return new Inspector(document.querySelector("#observablehq-chart_temp_nbjours-e78d5fed"));
-  if (name === "chart_p_cum_year_") return new Inspector(document.querySelector("#observablehq-chart_p_cum_year_-e78d5fed"));
-  if (name === "viewof selected_year") return new Inspector(document.querySelector("#observablehq-viewof-selected_year-e78d5fed"));
-  if (name === "chart_temp_year") return new Inspector(document.querySelector("#observablehq-chart_temp_year-e78d5fed"));
-  if (name === "chart_p_cum_") return new Inspector(document.querySelector("#observablehq-chart_p_cum_-e78d5fed"));
-  if (name === "chart_p_duree1") return new Inspector(document.querySelector("#observablehq-chart_p_duree1-e78d5fed"));
-  if (name === "chart_vent_year") return new Inspector(document.querySelector("#observablehq-chart_vent_year-e78d5fed"));
-  if (name === "viewof selected_T_variable") return new Inspector(document.querySelector("#observablehq-viewof-selected_T_variable-e78d5fed"));
-  if (name === "chart_heatmap") return new Inspector(document.querySelector("#observablehq-chart_heatmap-e78d5fed"));
-  return ["liste_stations_","chart_vent_","selected_station_","data_vent_","chart_vent_year","line_graph_temp_MinMax","bar_graph_nb_jours_temp","bar_graph_p_cum_year","graph_temp_annee","createRainPlot_","createDurationPlot_","results_","temp1_","jours_par_annee","precipitations_par_annee","grap_heatmap_","temp2_","list_year","temp_extend_year","jours_array_","data_"].includes(name);
+  if (name === "viewof dept_") return new Inspector(document.querySelector("#observablehq-viewof-dept_-601aa7e4"));
+  if (name === "viewof name_") return new Inspector(document.querySelector("#observablehq-viewof-name_-601aa7e4"));
+  if (name === "chart_temp_min_max") return new Inspector(document.querySelector("#observablehq-chart_temp_min_max-601aa7e4"));
+  if (name === "viewof temperature") return new Inspector(document.querySelector("#observablehq-viewof-temperature-601aa7e4"));
+  if (name === "chart_temp_nbjours") return new Inspector(document.querySelector("#observablehq-chart_temp_nbjours-601aa7e4"));
+  if (name === "chart_p_cum_year") return new Inspector(document.querySelector("#observablehq-chart_p_cum_year-601aa7e4"));
+  if (name === "viewof selected_year") return new Inspector(document.querySelector("#observablehq-viewof-selected_year-601aa7e4"));
+  if (name === "chart_temp_year") return new Inspector(document.querySelector("#observablehq-chart_temp_year-601aa7e4"));
+  if (name === "chart_p_cum") return new Inspector(document.querySelector("#observablehq-chart_p_cum-601aa7e4"));
+  if (name === "chart_p_duree") return new Inspector(document.querySelector("#observablehq-chart_p_duree-601aa7e4"));
+  if (name === "chart_vent_year") return new Inspector(document.querySelector("#observablehq-chart_vent_year-601aa7e4"));
+  if (name === "varaible_meteo") return new Inspector(document.querySelector("#observablehq-varaible_meteo-601aa7e4"));
+  return ["liste_stations_","chart_vent_","selected_station_","data_vent_","line_graph_temp_MinMax","bar_graph_nb_jours_temp","bar_graph_p_cum_year","graph_temp_annee","createRainPlot_","createDurationPlot_","results_","temp1_","jours_par_annee","precipitations_par_annee","chart_heatmap","grap_heatmap_","temp2_","list_year","temp_extend_year","jours_array_","data_"].includes(name);
 });
 </script>
 
