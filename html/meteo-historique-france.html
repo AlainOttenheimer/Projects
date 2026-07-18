@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Météo historique France</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+<style>
+  :root {
+    --bg: #F5F5F5;
+    --text: #111111;
+    --muted: #555555;
+    --accent: #1f77b4;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+
+  header {
+    padding: 8px 0 24px;
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 24px;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+    margin: 0 0 4px;
+  }
+
+  header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    background: #ffffff;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .controls > div {
+    min-width: 160px;
+  }
+
+  .block {
+    background: #ffffff;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+
+  .block-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+
+  .credit {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .credit a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .credit a:hover {
+    text-decoration: underline;
+  }
+
+  svg { max-width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div id="observablehq-titre_-e78d5fed"></div>
+    <p>Visualisation des données météorologiques historiques des stations françaises — Météo-France / data.gouv.fr</p>
+  </header>
+
+  <div class="controls">
+    <div id="observablehq-viewof-dept_-e78d5fed"></div>
+    <div id="observablehq-viewof-name_-e78d5fed"></div>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Températures min / max</p>
+    <div id="observablehq-chart_temp_min_max-e78d5fed"></div>
+  </div>
+
+  <div class="controls">
+    <div id="observablehq-viewof-temperature-e78d5fed"></div>
+  </div>
+
+  <div class="block">
+    <div id="observablehq-chart_temp_nbjours-e78d5fed"></div>
+  </div>
+
+  <div class="block">
+    <div id="observablehq-chart_p_cum_year_-e78d5fed"></div>
+  </div>
+
+  <div class="controls">
+    <div id="observablehq-viewof-selected_year-e78d5fed"></div>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Température — année sélectionnée</p>
+    <div id="observablehq-chart_temp_year-e78d5fed"></div>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Précipitations cumulées</p>
+    <div id="observablehq-chart_p_cum_-e78d5fed"></div>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Durée des précipitations</p>
+    <div id="observablehq-chart_p_duree1-e78d5fed"></div>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Rose des vents</p>
+    <div id="observablehq-chart_vent_year-e78d5fed"></div>
+  </div>
+
+  <div class="controls">
+    <div id="observablehq-viewof-selected_T_variable-e78d5fed"></div>
+  </div>
+
+  <div class="block">
+    <p class="block-title">Carte de chaleur</p>
+    <div id="observablehq-chart_heatmap-e78d5fed"></div>
+  </div>
+
+  <p class="credit">Credit: <a href="https://observablehq.com/d/f37454a7593791ae@2076" target="_blank" rel="noopener">Untitled by Alain Ottenheimer</a></p>
+
+</div>
+
+<script type="module">
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+import define from "https://api.observablehq.com/d/f37454a7593791ae@2076.js?v=4";
+new Runtime().module(define, name => {
+  if (name === "titre_") return new Inspector(document.querySelector("#observablehq-titre_-e78d5fed"));
+  if (name === "viewof dept_") return new Inspector(document.querySelector("#observablehq-viewof-dept_-e78d5fed"));
+  if (name === "viewof name_") return new Inspector(document.querySelector("#observablehq-viewof-name_-e78d5fed"));
+  if (name === "chart_temp_min_max") return new Inspector(document.querySelector("#observablehq-chart_temp_min_max-e78d5fed"));
+  if (name === "viewof temperature") return new Inspector(document.querySelector("#observablehq-viewof-temperature-e78d5fed"));
+  if (name === "chart_temp_nbjours") return new Inspector(document.querySelector("#observablehq-chart_temp_nbjours-e78d5fed"));
+  if (name === "chart_p_cum_year_") return new Inspector(document.querySelector("#observablehq-chart_p_cum_year_-e78d5fed"));
+  if (name === "viewof selected_year") return new Inspector(document.querySelector("#observablehq-viewof-selected_year-e78d5fed"));
+  if (name === "chart_temp_year") return new Inspector(document.querySelector("#observablehq-chart_temp_year-e78d5fed"));
+  if (name === "chart_p_cum_") return new Inspector(document.querySelector("#observablehq-chart_p_cum_-e78d5fed"));
+  if (name === "chart_p_duree1") return new Inspector(document.querySelector("#observablehq-chart_p_duree1-e78d5fed"));
+  if (name === "chart_vent_year") return new Inspector(document.querySelector("#observablehq-chart_vent_year-e78d5fed"));
+  if (name === "viewof selected_T_variable") return new Inspector(document.querySelector("#observablehq-viewof-selected_T_variable-e78d5fed"));
+  if (name === "chart_heatmap") return new Inspector(document.querySelector("#observablehq-chart_heatmap-e78d5fed"));
+  return ["liste_stations_","chart_vent_","selected_station_","data_vent_","chart_vent_year","line_graph_temp_MinMax","bar_graph_nb_jours_temp","bar_graph_p_cum_year","graph_temp_annee","createRainPlot_","createDurationPlot_","results_","temp1_","jours_par_annee","precipitations_par_annee","grap_heatmap_","temp2_","list_year","temp_extend_year","jours_array_","data_"].includes(name);
+});
+</script>
+
+</body>
+</html>
