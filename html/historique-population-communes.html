@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historique de la population de communes</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card-bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --accent: #2f6f4f;
+    --border: #e2e2df;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  header {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 20px;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0 0 4px;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+  }
+  .chart-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+  .controls-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 20px 40px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Historique de la population de communes</h1>
+  <p class="subtitle">Pour quelques communautés de communes des départements 70 (Haute-Saône) et 25 (Doubs)</p>
+</header>
+
+<main>
+  <div class="chart-card">
+    <div id="observablehq-Chart1-4c8f38fd"></div>
+  </div>
+
+  <div class="chart-card">
+    <div id="observablehq-chart2-4c8f38fd"></div>
+  </div>
+
+  <div class="controls-card">
+    <div id="observablehq-viewof-cc-4c8f38fd"></div>
+  </div>
+
+  <div class="chart-card">
+    <div id="observablehq-chart3-4c8f38fd"></div>
+  </div>
+
+  <div class="chart-card">
+    <div id="observablehq-chart4-4c8f38fd"></div>
+  </div>
+
+  <div class="chart-card">
+    <div id="observablehq-chart5-4c8f38fd"></div>
+  </div>
+</main>
+
+<footer>
+  Crédit : <a href="https://observablehq.com/@aotten/naissances-dans-les-communes" target="_blank" rel="noopener">Historique de la population de communes by Alain Ottenheimer</a>
+</footer>
+
+<script type="module">
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+import define from "https://api.observablehq.com/@aotten/naissances-dans-les-communes.js?v=4";
+new Runtime().module(define, name => {
+  if (name === "Chart1") return new Inspector(document.querySelector("#observablehq-Chart1-4c8f38fd"));
+  if (name === "chart2") return new Inspector(document.querySelector("#observablehq-chart2-4c8f38fd"));
+  if (name === "viewof cc") return new Inspector(document.querySelector("#observablehq-viewof-cc-4c8f38fd"));
+  if (name === "chart3") return new Inspector(document.querySelector("#observablehq-chart3-4c8f38fd"));
+  if (name === "chart4") return new Inspector(document.querySelector("#observablehq-chart4-4c8f38fd"));
+  if (name === "chart5") return new Inspector(document.querySelector("#observablehq-chart5-4c8f38fd"));
+  return ["data_plot","data_plot_pop","data_plot_dodge"].includes(name);
+});
+</script>
+
+</body>
+</html>
