@@ -171,27 +171,27 @@
   #s1, #d1, #d2, #d3, #d4, #d5, #d6, #conclusion{background:var(--surface);}
 
   /* ---------- interpretation list ---------- */
-  .read-list{
-    list-style:none;
-    margin:26px ;
-    padding:0;
-    display:grid;
-    gap:14px;
-    max-width:58ch;
-    justify-items:center;
-  }
-  .read-list li{
-    display:flex;
-    gap:14px;
-    font-size:16.5px;
-    color:rgba(11,36,48,0.86);
-    text-align:left;
-  }
-  .read-list li::before{
-    content:"—";
-    color:var(--shallow);
-    flex:none;
-  }
+  .read-list {
+  list-style: none;
+  margin: 26px auto; /* 'auto' centrer le bloc entier dans son conteneur */
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  max-width: 58ch;
+  justify-items: start; /* Aligne les bords gauches de tous les <li> */
+}
+
+.read-list li {
+  display: block;
+  font-size: 16.5px;
+  color: rgba(11, 36, 48, 0.86);
+  text-align: left;
+}
+
+.read-list li::before {
+  content: "— ";
+  color: var(--shallow);
+}
 
   /* ---------- observable embed ---------- */
   .embed-wrap{
