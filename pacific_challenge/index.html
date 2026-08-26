@@ -24,6 +24,7 @@
     --font-display:'Fraunces', serif;
     --font-body:'Public Sans', sans-serif;
     --font-mono:'IBM Plex Mono', monospace;
+    --content-max:960px;
   }
 
   *{box-sizing:border-box;}
@@ -43,67 +44,11 @@
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
   }
 
-  /* ---------- depth gauge (signature element) ---------- */
-  #depth-gauge{
-    position:fixed;
-    right:0;
-    top:0;
-    height:100vh;
-    width:64px;
-    z-index:50;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:space-between;
-    padding:22px 0;
-    pointer-events:none;
-    mix-blend-mode:difference;
-  }
-  #depth-gauge .rule{
-    flex:1;
-    width:1px;
-    background:linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0.1));
-    margin:10px 0;
-  }
-  #depth-gauge .reading{
-    font-family:var(--font-mono);
-    font-size:10.5px;
-    letter-spacing:0.08em;
-    color:#fff;
-    writing-mode:vertical-rl;
-    transform:rotate(180deg);
-  }
-  #depth-gauge .reading.top{writing-mode:horizontal-tb;transform:none;}
-
-  @media (max-width: 780px){
-    #depth-gauge{width:34px;}
-    #depth-gauge .reading{font-size:9px;}
-  }
-
   /* ---------- shared section chrome ---------- */
   section{
     position:relative;
-    padding:96px clamp(20px, 6vw, 96px);
+    padding:50px clamp(20px, 6vw, 96px);
     border-top:1px solid var(--line-dark);
-  }
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    opacity:0.62;
-    margin:0 0 18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:22px;
-    height:1px;
-    background:currentColor;
-    opacity:0.5;
   }
   h2.section-title{
     font-family:var(--font-display);
@@ -118,11 +63,12 @@
   .prose{
     max-width:62ch;
     font-size:18px;
+    line-height:1.5;
     color:rgba(11,36,48,0.86);
     margin-left:auto;
     margin-right:auto;
     text-align:justify;
-    text-align-last:center;
+    text-align-last:left;
   }
   .prose p{margin:0 0 20px;}
   .prose strong{color:var(--coral); font-weight:600;}
@@ -133,26 +79,18 @@
     border:none;
     background:var(--plate-bg, transparent);
     padding:14px 14px 0;
-  }
-  /* FIG. 01, FIG. 05, FIG. 07 carry an inline --plate-bg custom property
-     (see their <figure> tags below) so each can be tuned independently
-     without touching this shared rule. */
-  figure.plate .frame-label{
-    display:flex;
-    justify-content:space-between;
-    font-family:var(--font-mono);
-    font-size:10.5px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    opacity:0.5;
-    padding-bottom:10px;
-    text-align:left;
+    max-width:var(--content-max);
+    margin-left:auto;
+    margin-right:auto;
   }
   figure.plate img{width:100%;}
   .figure-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:28px;
+    max-width:1160px;
+    margin-left:auto;
+    margin-right:auto;
   }
   @media (max-width:760px){ .figure-grid{grid-template-columns:1fr;} }
 
@@ -160,10 +98,11 @@
   figure.plate-quarter{
     width:25%;
     min-width:220px;
+    max-width:300px;
     margin-left:auto;
     margin-right:auto;
   }
-  @media (max-width:760px){ figure.plate-quarter{width:60%;} }
+  @media (max-width:760px){ figure.plate-quarter{width:60%; max-width:none;} }
 
   /* ---------- hero ---------- */
   #hero{
@@ -177,18 +116,6 @@
     border-top:none;
     padding-top:64px;
   }
-  #hero .logo-mark{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-family:var(--font-mono);
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    opacity:0.62;
-    margin-bottom:56px;
-  }
-  #hero .logo-mark img{width:26px;height:26px;object-fit:contain;}
   #hero h1{
     font-family:var(--font-display);
     font-weight:440;
@@ -201,13 +128,6 @@
   #hero h1 em{
     font-style:italic;
     color:var(--coral);
-  }
-  #hero .coords{
-    font-family:var(--font-mono);
-    font-size:12.5px;
-    letter-spacing:0.1em;
-    opacity:0.55;
-    margin:22px 0 46px;
   }
   #hero .prose{max-width:58ch; font-size:20px;}
   #hero .scroll-cue{
@@ -243,20 +163,17 @@
     color:var(--surface-ink);
     border-top:1px solid var(--line-dark);
   }
-  .dive .eyebrow{color:var(--shallow); opacity:0.85;}
-  .dive .eyebrow::before{background:var(--shallow);}
   .dive h2.section-title{color:var(--surface-ink);}
   .dive .prose{color:rgba(11,36,48,0.86);}
   .dive .prose strong{color:var(--coral);}
   .dive figure.plate{background:transparent; border:none;}
-  .dive figure.plate .frame-label{opacity:0.5; color:var(--surface-ink);}
 
   #s1, #d1, #d2, #d3, #d4, #d5, #d6, #conclusion{background:var(--surface);}
 
   /* ---------- interpretation list ---------- */
   .read-list{
     list-style:none;
-    margin:26px auto 0;
+    margin:26px ;
     padding:0;
     display:grid;
     gap:14px;
@@ -281,21 +198,39 @@
     border:1px solid var(--line-dark);
     background:transparent;
     padding:18px;
+    max-width:var(--content-max);
+    margin-left:auto;
+    margin-right:auto;
   }
-  .embed-wrap .credit{
-    font-family:var(--font-mono);
-    font-size:11.5px;
-    opacity:0.55;
-    margin-top:14px;
-  }
-  .embed-wrap .credit a{color:var(--shallow);}
 
-  iframe.plate-frame{
-    width:100%;
-    height:560px;
-    border:0;
-    display:block;
+  /* ---------- reference list (Data & Methods) ---------- */
+  .reference-list{
+    list-style:none;
+    margin:0 0 32px;
+    padding:0;
+    text-align:left;
+    display:grid;
+    gap:13px;
   }
+  .reference-list li{
+    display:flex;
+    gap:12px;
+    font-size:15.5px;
+    line-height:1.45;
+    color:rgba(11,36,48,0.86);
+  }
+  .reference-list .ref-num{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--shallow);
+    flex:none;
+    min-width:30px;
+  }
+  .reference-list a{
+    color:var(--shallow);
+    word-break:break-word;
+  }
+  .reference-list em{font-style:italic;}
 
   /* ---------- conclusion ---------- */
   #conclusion .prose{max-width:66ch; font-size:19px;}
@@ -324,12 +259,10 @@
 </head>
 <body>
 
-
-
 <section id="hero">
-  <h1>The Blue Leverage: why Oceania's <em>ocean wealth</em> is its ultimate weapon</h1>
+  <h1>The Blue Leverage: Why Oceania's <em>Ocean Wealth</em> Matters</h1>
    <div class="prose">
-    <p>Beyond Australia and New Zealand lies a vast, often overlooked Oceania. These diverse island nations share unique political landscapes, shifting populations, and a front-row seat to the climate crisis. Let's explore what divides them, what unites them, and the monumental fight ahead.</p>
+    <p>Beyond Australia and New Zealand lies a vast, often overlooked Oceania. These diverse island nations share unique political landscapes, shifting populations, and a front-row seat to the climate crisis. Let's explore what divides them, what unites them, and the monumental challenge ahead.</p>
   </div>
   <div class="scroll-cue"><div class="bob"></div>Descend</div>
 </section>
@@ -337,8 +270,7 @@
 <section id="s1">
   <h2 class="section-title">A vast territory, a fragmented independence</h2>
   <figure class="plate" style="border:none; padding:0; --plate-bg: var(--surface);">
-    <div class="frame-label" style="padding:0 0 10px;"><span>FIG. 01</span></div>
-    <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/pacific_carte.png" alt="Map of Oceania">
+      <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/pacific_carte.png" alt="Map of Oceania">
   </figure>
   <div class="prose" style="margin-top:40px;">
     <p>Oceania is massive. A flight from Palau in the west to French Polynesia in the east spans over 8,700 kilometers. At standard cruising speeds, that trip takes roughly ten hours — equivalent to crossing continental Australia from west to east twice. The geography varies greatly: some nations consist of large, compact islands, others are made up of widely scattered islands, while some form vast, sprawling archipelagos. This geography directly shapes their cultures and economies.</p>
@@ -350,31 +282,29 @@
 <section id="d1" class="dive">
     <h2 class="section-title">The land divide: a vastly unequal terrain</h2>
   <figure class="plate plate-quarter">
-    <div class="frame-label"><span>FIG. 02</span><span>By magnitude</span></div>
-    <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/magnitude_land.png" alt="Land area by country, magnitude view">
+     <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/magnitude_land.png" alt="Land area by country, magnitude view">
   </figure>
   <figure class="plate" style="margin-top:28px;">
-    <div class="frame-label"><span>FIG. 03</span></div>
+  
     <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/treemap_land.png" alt="Land area treemap">
   </figure>
   <div class="prose" style="margin-top:40px;">
-    <p>Oceania accounts for less than 1% of the world's land area. When you look closer, the distribution of that land is strikingly unequal. Over 80% of the region's land area belongs to just five independent nations: Papua New Guinea, the Solomon Islands, Fiji, Vanuatu, and Samoa. Papua New Guinea is the undisputed giant among them, claiming more than 60% of the total land cover all by itself.</p>
+    <p>Oceania accounts for less than 0.5% of the world's land area. When you look closer, the distribution of that land is strikingly unequal. 98% of the region's land area belongs to just five independent nations: Papua New Guinea, the Solomon Islands, Fiji, Vanuatu, and Samoa. Papua New Guinea is the undisputed giant among them, claiming more than 84% of the total land cover all by itself.</p>
   </div>
 </section>
 
 <section id="d2" class="dive">
    <h2 class="section-title">A youthful population, a heavy climate burden</h2>
   <figure class="plate plate-quarter">
-    <div class="frame-label"><span>FIG. 04</span></div>
-    <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/magnitude_population.png" alt="Population by country, magnitude view">
+       <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/magnitude_population.png" alt="Population by country, magnitude view">
   </figure>
-  <div class="prose" style="margin-top:40px;">
-    <p>Oceania is home to just 14.4 million people, making up less than 0.2% of the world's total population. To understand the future this population faces, let's look at a unique version of their age pyramid — one that maps the exact temperature anomaly present when each generation was born.</p>
-  </div>
   <figure class="plate" style="margin-top:36px; --plate-bg: transparent;">
-    <div class="frame-label"><span>FIG. 05</span></div>
+   
     <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/pyramide_oceania.png" alt="Age pyramid colored by temperature anomaly at birth">
   </figure>
+  <div class="prose" style="margin-top:40px;">
+    <p>Oceania is home to just 14.4 million people, making up 0.17% of the world's total population. To understand the future of this population, let's examine an unusual version of its age pyramid that highlights the temperature anomaly present at the birth of each generation.</p>
+  </div>
   <div class="prose" style="margin-top:36px;">
     <p>Here is how to interpret this visualization:</p>
   </div>
@@ -383,7 +313,7 @@
     <li>The color of each bar reflects the global temperature anomaly at the time that generation was born, inspired by the Climate Warming Stripes. This offers a more emotional and intuitive reinterpretation of the well-known Warming Stripes graphic.</li>
   </ul>
   <div class="prose" style="margin-top:30px;">
-    <p>The first insight is Oceania's striking youth. Most of the region's population is under 40, with a median age of just 24 years. While high birth rates offer a strong foundation for future economic growth, they also come with a <strong>heavy burden</strong>. These young generations are inheriting a warming world, forcing them to confront and mitigate escalating climate challenges throughout their entire lifetimes.</p>
+    <p>The first insight is Oceania's striking youth. The region's median age is just 24 years old. While high birth rates offer a strong foundation for future economic growth, they also come with a <strong>heavy burden</strong>. These younger generations are inheriting a warming world and will have to deal with the consequences of climate change throughout their lives.</p>
   </div>
 
   <div class="embed-wrap" style="margin-top:44px;">
@@ -403,17 +333,17 @@
    <h2 class="section-title">14.4 million people, a starkly unequal spread</h2>
   <div class="figure-grid">
     <figure class="plate">
-      <div class="frame-label"><span>FIG. 06</span></div>
+      
       <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/treemap_population.png" alt="Population treemap">
     </figure>
     <figure class="plate" style="--plate-bg: transparent;">
-      <div class="frame-label"><span>FIG. 07</span></div>
+      
       <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/pyramide_countries.png" alt="Age pyramids by country">
     </figure>
   </div>
   <div class="prose" style="margin-top:40px;">
     <p>Population distribution across Oceania is highly uneven. The five independent states with the largest landmasses also hold the vast majority of the region's people.</p>
-    <p>New Caledonia and Vanuatu offer a striking demographic contrast. New Caledonia features a top-heavy age pyramid with a high median age and low birth rates, signaling a shrinking, aging population. In contrast, Vanuatu displays a wide-based, expansive pyramid, with over 60% of its people under age 25 due to high fertility and rapid growth.</p>
+    <p>New Caledonia and Vanuatu offer a striking demographic contrast. New Caledonia features a top-heavy age pyramid with a high median age and low birth rates, signaling a shrinking, aging population. In contrast, Vanuatu displays a wide-based, expansive pyramid, with over 60% of its people under age 25.</p>
     <p>At the other extreme, five territories — Palau, the Cook Islands, Wallis and Futuna, Nauru, and Tuvalu — have populations under 20,000. Each is roughly the size of a small Western town.</p>
     <p><em>(To explore the historical population trends of each country, visit: 
 <a href="https://observablehq.com/embed/8f292e893ae384b2@7842?cells=title%2Cviewof+selected_year%2Cviewof+country%2CPyramid_country%2Cembed_en%2CSources" target="_blank">
@@ -427,15 +357,15 @@ this interactive visualization
 <section id="d4" class="dive">
    <h2 class="section-title">Tiny islands, massive maritime wealth</h2>
   <figure class="plate plate-quarter">
-    <div class="frame-label"><span>FIG. 08</span></div>
+    
     <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/magnitude_sea.png" alt="Exclusive Economic Zones by magnitude">
   </figure>
   <div class="prose" style="margin-top:40px;">
-    <p>On paper, Oceania seems tiny — accounting for a fraction of global population and land. But step into the water, and its true power emerges. The region commands up to 10% of the world's Exclusive Economic Zones (EEZs). This provides immense economic and political weight. This maritime footprint may be its single greatest asset.</p>
+    <p>On paper, Oceania seems tiny — accounting for a fraction of global population and land. But step into the water, and its true power emerges. The region commands almost 20% of the world's Exclusive Economic Zones (EEZs). This provides immense economic and political weight. This maritime footprint may be its single greatest asset.</p>
     <p>Is this ocean wealth spread evenly across these island nations, or does it belong to a select few?</p>
   </div>
   <figure class="plate" style="margin-top:36px;">
-    <div class="frame-label"><span>FIG. 09</span></div>
+   
     <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/treemap_EEZ.png" alt="EEZ treemap by country">
   </figure>
   <div class="prose" style="margin-top:36px;">
@@ -447,7 +377,7 @@ this interactive visualization
 <section id="d5" class="dive">
    <h2 class="section-title">Rising sea temperatures, accelerating extremes</h2>
   <figure class="plate">
-    <div class="frame-label"><span>FIG. 10</span></div>
+    
     <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/sea_surface_anomalie.png" alt="Sea surface temperature anomaly chart">
   </figure>
   <div class="prose" style="margin-top:40px;">
@@ -459,7 +389,7 @@ this interactive visualization
 <section id="d6" class="dive">
    <h2 class="section-title">Rising waters, existential threats</h2>
   <figure class="plate">
-    <div class="frame-label"><span>FIG. 11</span></div>
+    
       <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/sea_level.png" alt="Sea surface temperature anomaly chart"></figure>
   <div class="prose" style="margin-top:40px;">
     <p>To measure this threat, we look at the Sea Level Anomalies (SLA) indicator, which monitors ocean heights from space. By comparing these satellite readings to a historical average from 1993 to 2012, we can calculate the exact difference — or "anomaly" — in meters. In this visualization, blue bars represent a rising sea, and white bars show a drop. Notice how blue bars entirely dominate the most recent years. This undeniable upward trend poses a catastrophic risk to low-altitude nations such as the Marshall Islands, Kiribati, Tokelau, and Tuvalu.</p>
@@ -470,8 +400,15 @@ this interactive visualization
     <p>How has the share of cumulative CO2 emissions evolved for oceanic countries?</p>
   </div>
   <figure class="plate">
-    <div class="frame-label"><span>FIG. 12</span></div>
+   
     <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/CO2 contribution.png" alt="Cumulative CO2 contribution by oceanic countries">
+    <br>
+     <br>
+    <div class="prose" style="margin-top: -14px; margin-bottom: 34px;">
+  <p>
+    CO₂ emissions from Pacific Island countries and territories (excluding Australia and New Zealand) remain extremely low, accounting for just 0.05% of global emissions. Only two territories—New Caledonia and Palau—reach levels comparable to Western countries, exceeding 12 t/capita. The rest of the region falls into three distinct groups: a first intermediate group averages around 4 t/capita, a second sits near 1.5 t/capita, while the final group, representing the vast majority of the population, remains below 1 t/capita. Nevertheless, the region’s contribution is growing faster than the global average, highlighting stark internal disparities.
+  </p>
+</div>
   </figure>
 </section>
 
@@ -479,14 +416,37 @@ this interactive visualization
   <h2 class="section-title" >Conclusions</h2>
   <div class="prose" style="color:rgba(8, 8, 7, 0.85);">
     <p>Oceanic countries are incredibly diverse in their status, population sizes, and age demographics. Yet, they are bound together by a shared existential threat: <strong>climate change</strong>. Rising temperatures and surging sea levels threaten to swallow entire islands, which could soon force massive populations to flee their homes. However, these nations possess a unifying trump card — their vast, globally significant <strong>Exclusive Economic Zones (EEZs)</strong>.</p>
-    <p>First, Pacific nations must join forces to safeguard their ocean from overexploitation, pollution, and unsustainable tourism. Second, they must turn this vast maritime footprint into political and economic leverage: the <strong>Blue Leverage</strong>. Survival demands total unity on the world stage. By standing together, these island states can compel global powers to fund urgent adaptation and negotiate dignified migration pathways — ensuring their rich cultural identities endure even if their physical land vanishes beneath the waves, regardless of their historical status.</p>
+    <p>The pacific nations must join forces to safeguard their ocean from overexploitation, pollution, and unsustainable tourism. They must also turn this vast maritime footprint into political and economic leverage: the <strong>Blue Leverage</strong>. Survival demands total unity on the world stage. By standing together, these island states can compel global powers to fund urgent adaptation and negotiate dignified migration pathways — ensuring their rich cultural identities endure even if their physical land vanishes beneath the waves, regardless of their historical status.</p>
   </div>
-  <div class="sign-off">
+
+</section>
+
+<section id="conclusion" class="dive">
+ <h2 class="section-title" >Data &amp; methods</h2>
+ <div class="prose" style="color:rgba(8, 8, 7, 0.85); max-width:640px;">
+  <h3 style="text-align:left;">Data</h3>
+  <ol class="reference-list">
+    <li><span class="ref-num">[1]</span><span>Pacific Data Viz Challenge — official datasets. <a href="https://pacificdatavizchallenge.org/" target="_blank" rel="noopener noreferrer">pacificdatavizchallenge.org</a></span></li>
+    <li><span class="ref-num">[2]</span><span>United Nations, <em>World Population Prospects 2024</em>. <a href="https://population.un.org/wpp/downloads?folder=Standard%20Projections&group=Most%20used" target="_blank" rel="noopener noreferrer">population.un.org</a></span></li>
+    <li><span class="ref-num">[3]</span><span>Pacific Data Hub. <a href="https://pacificdata.org/" target="_blank" rel="noopener noreferrer">pacificdata.org</a></span></li>
+    <li><span class="ref-num">[4]</span><span>Wikipedia, for various general data.</span></li>
+  </ol>
+
+  <h3 style="text-align:left;">Methods</h3>
+  <ol class="reference-list" start="5">
+    <li><span class="ref-num">[5]</span><span><strong>Python – Jupyter Notebook</strong> — data preparation.</span></li>
+    <li><span class="ref-num">[6]</span><span><strong>QGIS</strong> — map creation.</span></li>
+    <li><span class="ref-num">[7]</span><span><strong>Observable HQ – JavaScript</strong> — static &amp; interactive graphics.</span></li>
+    <li><span class="ref-num">[8]</span><span><strong>Python / Plotly</strong> — 3D graphics.</span></li>
+    <li><span class="ref-num">[9]</span><span><strong>Illustrator</strong> — graphics refinement.</span></li>
+    <li><span class="ref-num">[10]</span><span><strong>AI</strong> — coding assistance &amp; HTML page structure.</span></li>
+  </ol>
+ </div>
+<div class="sign-off">
     <img src="https://alainottenheimer.github.io/Projects/pacific_challenge/baleine_svg.png" alt="">
     <span class="meta">This is a project made by Alain Ottenheimer and Houcem Chaabane for the Pacific Data Challenge 2026</span>
   </div>
 </section>
-
 
 
 
