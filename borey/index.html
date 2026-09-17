@@ -3,11 +3,331 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historique de la population de communes — Triangle Vert</title>
 <link rel="icon" href="https://alainottenheimer.github.io/Projects/borey/logo_ao_bleu.png">
-<title>population triangle vert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+<style>
+  :root{
+    --ink:#14213D;
+    --ink-soft:#3B4A6B;
+    --paper:#F5F6F2;
+    --paper-raised:#FFFFFF;
+    --line:#DAD9D0;
+    --accent:#0c7a3a;
+    --accent-deep:#C4791E;
+    --borey:#C1440E;
+    --max-w:760px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:1.05rem;
+    line-height:1.65;
+  }
+  ::selection{background:var(--accent); color:var(--ink);}
+
+  a{color:var(--accent-deep);}
+  a:hover{color:var(--ink);}
+
+  header.masthead{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:2.5rem 1.5rem 1.25rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    border-bottom:1px solid var(--line);
+  }
+  header.masthead img.logo{
+    height:44px;
+    width:auto;
+    display:block;
+  }
+  header.masthead .kicker{
+    font-size:0.8rem;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+  }
+
+  main{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(2.1rem, 5vw, 3rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:2.75rem 0 0.5rem;
+    color:var(--ink);
+  }
+  p.dek{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:0 0 2.5rem;
+  }
+
+  section{
+    margin:3rem 0;
+  }
+  section h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.6rem;
+    line-height:1.2;
+    margin:0 0 1rem;
+    color:var(--ink);
+  }
+  section p{
+    max-width:68ch;
+    margin:0 0 1.1rem;
+  }
+
+  figure{
+    margin:1.75rem 0;
+  }
+  figure img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:6px;
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+  }
+  figcaption{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-top:0.6rem;
+    max-width:60ch;
+  }
+
+  .legend{
+    display:flex;
+    gap:1.5rem;
+    flex-wrap:wrap;
+    margin:0.75rem 0 1.75rem;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+  }
+  .legend .swatch{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .legend .dot{
+    width:0.7rem;
+    height:0.7rem;
+    border-radius:50%;
+    display:inline-block;
+  }
+  .dot.borey{background:var(--borey);}
+  .dot.other{background:var(--accent);}
+
+  .callout{
+    border-left:3px solid var(--accent-deep);
+    padding:0.25rem 0 0.25rem 1.25rem;
+    margin:1.75rem 0;
+    max-width:60ch;
+  }
+  .callout p{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.2rem;
+    line-height:1.4;
+    color:var(--ink);
+    margin:0;
+  }
+
+  .embed-block{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1.5rem;
+    margin:1.5rem 0 0.75rem;
+  }
+  .embed-block .credit{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    margin-top:0.75rem;
+  }
+  .embed-block .credit a{
+    color:var(--ink-soft);
+    text-decoration:underline;
+  }
+
+  .sources{
+    background:transparent;
+    border-top:1px solid var(--line);
+    padding-top:1.5rem;
+  }
+  .sources ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  .sources li{
+    margin:0.5rem 0;
+    font-size:0.95rem;
+  }
+  .sources li a{
+    word-break:break-word;
+  }
+
+  footer{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:2rem 1.5rem 3.5rem;
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    border-top:1px solid var(--line);
+    margin-top:2.5rem;
+  }
+
+  @media (max-width: 600px){
+    header.masthead{padding:1.75rem 1.25rem 1rem;}
+    main{padding:0 1.25rem;}
+    h1.title{margin-top:2rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto !important;}
+  }
+</style>
 </head>
 <body>
-<h1> A définir</h1>
+
+
+<main>
+
+  <h1 class="title">Evolution de la population de la communauté de communes du triangle vert</h1>
+  <p class="dek">Ce que les naissances et les recensements racontent d'un territoire.</p>
+
+  <section id="naissances">
+    <p>
+      La fresque ci-dessous rassemble les 2&nbsp;021 naissances recensées entre 2008 et 2024 dans les 42 communes
+      de la communauté de communes du Triangle Vert, dont fait partie Borey. Chaque cercle représente une naissance.
+    </p>
+
+    <div class="legend">
+      <span class="swatch"><span class="dot borey"></span> Naissances à Borey</span>
+      <span class="swatch"><span class="dot other"></span> Autres communes (couleurs purement esthétiques)</span>
+    </div>
+
+    <p>
+      Les fines barres verticales noires marquent l'échelle des années, de 2008 à 2024. Les données ne précisant
+      que l'année de naissance, la position d'un cercle ne donne aucune indication sur le mois ou le jour.
+    </p>
+
+    <p>
+      Ce graphique est un <em>essaim d'abeilles</em> (<em>beeswarm</em>) : un procédé de décalage automatique évite
+      que les cercles se superposent, rendant chaque naissance individuellement visible.
+    </p>
+
+    <figure>
+      <img src="https://alainottenheimer.github.io/Projects/borey/naissances_triangle_vert.png" alt="Essaim d'abeilles des naissances dans les communes du Triangle Vert, 2008-2024">
+      <figcaption>Naissances recensées dans les communes du Triangle Vert, 2008–2024.</figcaption>
+    </figure>
+  </section>
+
+  <section id="pourquoi">
+    <h2>Pourquoi ces données comptent</h2>
+    <p>
+      Suivre les naissances d'un territoire n'a rien d'anecdotique : cela permet, par exemple, d'anticiper les
+      effectifs des écoles et des collèges dans les années à venir, et d'adapter les moyens en conséquence.
+    </p>
+
+    <div class="callout">
+      <p>Les naissances sont en forte diminution depuis 2008, un constat partagé par l'ensemble des
+      communautés de communes voisines, qui s'inscrit dans une tendance nationale plus large.</p>
+    </div>
+
+    <figure>
+      <img src="https://alainottenheimer.github.io/Projects/borey/Évol_naissance_CC.png" alt="Évolution des naissances par communauté de communes">
+      <figcaption>Évolution des naissances, communauté de communes du Triangle Vert et voisines.</figcaption>
+    </figure>
+  </section>
+
+  <section id="explorer-naissances">
+    <h2>Explorer les communautés voisines</h2>
+    <p>
+      Vous pouvez sélectionner d'autres communautés de communes autour du Triangle Vert pour visualiser
+      l'évolution des naissances dans leurs communes.
+    </p>
+
+    <div class="embed-block">
+      <div id="observablehq-viewof-cc-9bb73505"></div>
+      <div id="observablehq-chart3-9bb73505"></div>
+     </div>
+  </section>
+
+  <section id="explorer-population">
+    <h2>Un siècle et demi de population communale</h2>
+    <p>
+      Le même principe s'applique à la population elle-même : explorez son évolution depuis 1876 dans
+      l'ensemble des communes de ces communautés de communes.
+    </p>
+
+    <div class="embed-block">
+      <div id="observablehq-viewof-cc-a47f6dcd"></div>
+      <div id="observablehq-chart5-a47f6dcd"></div>
+       </div>
+  </section>
+
+  <section class="sources">
+    <h2>Sources</h2>
+    <ul>
+      <li>
+        <a href="https://www.insee.fr/fr/statistiques/3698339" target="_blank" rel="noopener">insee.fr/fr/statistiques/3698339</a>
+        — historique des populations communales, recensements 1876–2023.
+      </li>
+      <li>
+        <a href="https://www.data.gouv.fr/datasets/naissances-2008-2024-france" target="_blank" rel="noopener">data.gouv.fr/datasets/naissances-2008-2024-france</a>
+        — naissances recensées entre 2008 et 2024.
+      </li>
+      <li>
+        <a href="https://observablehq.com/@aotten/historique-de-la-population-de-communes" target="_blank" rel="noopener">Historique de la population de communes, par Alain Ottenheimer</a>
+        — graphiques interactifs
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Alain Ottenheimer
+</footer>
+
+<script type="module">
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+import define from "https://api.observablehq.com/@aotten/historique-de-la-population-de-communes.js?v=4";
+
+new Runtime().module(define, name => {
+  if (name === "viewof cc") return new Inspector(document.querySelector("#observablehq-viewof-cc-9bb73505"));
+  if (name === "chart3") return new Inspector(document.querySelector("#observablehq-chart3-9bb73505"));
+  return ["chart4","chart5","data_plot","data_plot_pop","Chart1","data_plot_dodge"].includes(name);
+});
+
+new Runtime().module(define, name => {
+  if (name === "viewof cc") return new Inspector(document.querySelector("#observablehq-viewof-cc-a47f6dcd"));
+  if (name === "chart5") return new Inspector(document.querySelector("#observablehq-chart5-a47f6dcd"));
+  return ["chart3","chart4","data_plot","data_plot_pop","Chart1","data_plot_dodge"].includes(name);
+});
+</script>
 
 </body>
 </html>
