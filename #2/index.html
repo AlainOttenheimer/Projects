@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historique de la population de communes — Triangle Vert</title>
+<link rel="icon" href="https://alainottenheimer.github.io/Projects/borey/logo_ao_bleu.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+<style>
+  :root{
+    --ink:#14213D;
+    --ink-soft:#3B4A6B;
+    --paper:#F5F6F2;
+    --paper-raised:#FFFFFF;
+    --line:#DAD9D0;
+    --accent:#0c7a3a;
+    --accent-deep:#C4791E;
+    --borey:#C1440E;
+    --max-w:760px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:1.05rem;
+    line-height:1.65;
+  }
+  ::selection{background:var(--accent); color:var(--ink);}
+
+  a{color:var(--accent-deep);}
+  a:hover{color:var(--ink);}
+
+  header.masthead{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:2.5rem 1.5rem 1.25rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    border-bottom:1px solid var(--line);
+  }
+  header.masthead img.logo{
+    height:44px;
+    width:auto;
+    display:block;
+  }
+  header.masthead .kicker{
+    font-size:0.8rem;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+  }
+
+  main{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(2.1rem, 5vw, 3rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:2.75rem 0 0.5rem;
+    color:var(--ink);
+  }
+  p.dek{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:0 0 2.5rem;
+  }
+
+  section{
+    margin:3rem 0;
+  }
+  section h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.6rem;
+    line-height:1.2;
+    margin:0 0 1rem;
+    color:var(--ink);
+  }
+  section p{
+    max-width:68ch;
+    margin:0 0 1.1rem;
+  }
+
+  figure{
+    margin:1.75rem 0;
+  }
+  figure img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:6px;
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+  }
+  figcaption{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-top:0.6rem;
+    max-width:60ch;
+  }
+
+  .legend{
+    display:flex;
+    gap:1.5rem;
+    flex-wrap:wrap;
+    margin:0.75rem 0 1.75rem;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+  }
+  .legend .swatch{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .legend .dot{
+    width:0.7rem;
+    height:0.7rem;
+    border-radius:50%;
+    display:inline-block;
+  }
+  .dot.borey{background:var(--borey);}
+  .dot.other{background:var(--accent);}
+
+  .callout{
+    border-left:3px solid var(--accent-deep);
+    padding:0.25rem 0 0.25rem 1.25rem;
+    margin:1.75rem 0;
+    max-width:60ch;
+  }
+  .callout p{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.2rem;
+    line-height:1.4;
+    color:var(--ink);
+    margin:0;
+  }
+
+  .embed-block{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1.5rem;
+    margin:1.5rem 0 0.75rem;
+  }
+  .embed-block .credit{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    margin-top:0.75rem;
+  }
+  .embed-block .credit a{
+    color:var(--ink-soft);
+    text-decoration:underline;
+  }
+
+  .sources{
+    background:transparent;
+    border-top:1px solid var(--line);
+    padding-top:1.5rem;
+  }
+  .sources ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  .sources li{
+    margin:0.5rem 0;
+    font-size:0.95rem;
+  }
+  .sources li a{
+    word-break:break-word;
+  }
+
+  footer{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:2rem 1.5rem 3.5rem;
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    border-top:1px solid var(--line);
+    margin-top:2.5rem;
+  }
+
+  @media (max-width: 600px){
+    header.masthead{padding:1.75rem 1.25rem 1rem;}
+    main{padding:0 1.25rem;}
+    h1.title{margin-top:2rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+
+<main>
+
+  <h1 class="title">Projet #2</h1>
+  <p class="dek">Titre.</p>
+
+  <section id="naissances">
+    <p>
+      Texte1
+    </p>
+
+   
+
+</main>
+
+<footer>
+ Auteur
+</footer>
+
+
+
+</body>
+</html>
