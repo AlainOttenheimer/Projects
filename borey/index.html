@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historique de la population de communes — Triangle Vert</title>
+<title>naissance dans les communes du Triangle Vert</title>
 <link rel="icon" href="https://alainottenheimer.github.io/Projects/borey/logo_ao_bleu.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -207,6 +207,40 @@
   @media (prefers-reduced-motion: reduce){
     *{scroll-behavior:auto !important;}
   }
+
+.more-section{
+  margin:2rem 0;
+  text-align:center;
+}
+
+.more-button{
+  display:inline-block;
+  padding:0.7rem 1.4rem;
+  border:1px solid var(--accent);
+  border-radius:6px;
+  background:transparent;
+  color:var(--accent);
+  font-family:'Source Sans 3', sans-serif;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:background 0.2s, color 0.2s;
+}
+
+.more-button:hover{
+  background:var(--accent);
+  color:white;
+}
+
+#explorer-population{
+  display:none;
+}
+
+#explorer-population.visible{
+  display:block;
+}
+
+
 </style>
 </head>
 <body>
@@ -214,14 +248,13 @@
 
 <main>
 
-  <h1 class="title">Evolution de la population de la communauté de communes du triangle vert</h1>
-  <p class="dek">Ce que les naissances et les recensements racontent d'un territoire.</p>
+  <h1 class="title">Evolution des naissances dans la communauté de communes du triangle vert</h1>
+  <p class="dek">Ce que les recensements des naissances racontent d'un territoire.</p>
 
   <section id="naissances">
     <p>
-      La fresque ci-dessous rassemble les 2&nbsp;021 naissances recensées entre 2008 et 2024 dans les 42 communes
-      de la communauté de communes du Triangle Vert, dont fait partie Borey. Chaque cercle représente une naissance.
-    </p>
+      Cette fresque, peinte sur un bâtiment de Borey, rassemble les 2&nbsp;021 naissances recensées entre 2008 et 2024 dans les 42 communes de la Communauté de communes du Triangle Vert. Chaque cercle représente une naissance.
+          </p>
 
     <div class="legend">
       <span class="swatch"><span class="dot borey"></span> Naissances à Borey</span>
@@ -229,7 +262,7 @@
     </div>
 
     <p>
-      Les fines barres verticales noires marquent l'échelle des années, de 2008 à 2024. Les données ne précisant
+      Les fines barres verticales en bas marquent l'échelle des années, de 2008 à 2024. Les données ne précisant
       que l'année de naissance, la position d'un cercle ne donne aucune indication sur le mois ou le jour.
     </p>
 
@@ -258,12 +291,12 @@
 
     <figure>
       <img src="https://alainottenheimer.github.io/Projects/borey/Évol_naissance_CC.png" alt="Évolution des naissances par communauté de communes">
-      <figcaption>Évolution des naissances, communauté de communes du Triangle Vert et voisines.</figcaption>
+      <figcaption>Évolution des naissances, dans les communautés voisines du Triangle Vert.</figcaption>
     </figure>
   </section>
 
   <section id="explorer-naissances">
-    <h2>Explorer les communautés voisines</h2>
+    <h2>Explorer les naissances dans les communautés voisines</h2>
     <p>
       Vous pouvez sélectionner d'autres communautés de communes autour du Triangle Vert pour visualiser
       l'évolution des naissances dans leurs communes.
@@ -275,21 +308,28 @@
      </div>
   </section>
 
-  <section id="explorer-population">
-    <h2>Un siècle et demi de population communale</h2>
-    <p>
-      Le même principe s'applique à la population elle-même : explorez son évolution depuis 1876 dans
-      l'ensemble des communes de ces communautés de communes.
-    </p>
+  <div class="more-section">
+  <button class="more-button" id="toggle-population" type="button"
+          aria-expanded="false" aria-controls="explorer-population">
+    Pour aller plus loin…
+  </button>
+</div>
 
-    <div class="embed-block">
-      <div id="observablehq-viewof-cc-a47f6dcd"></div>
-      <div id="observablehq-chart5-a47f6dcd"></div>
-       </div>
-  </section>
+<section id="explorer-population">
+  <h2>Un siècle et demi de population communale</h2>
+  <p>
+    Le même principe s'applique à la population elle-même : explorez son évolution depuis 1876 dans
+    l'ensemble des communes de ces communautés de communes.
+  </p>
+
+  <div class="embed-block">
+    <div id="observablehq-viewof-cc-a47f6dcd"></div>
+    <div id="observablehq-chart5-a47f6dcd"></div>
+  </div>
+</section>
 
   <section class="sources">
-    <h2>Sources</h2>
+    <h2>Données et ressources</h2>
     <ul>
       <li>
         <a href="https://www.insee.fr/fr/statistiques/3698339" target="_blank" rel="noopener">insee.fr/fr/statistiques/3698339</a>
@@ -303,13 +343,17 @@
         <a href="https://observablehq.com/@aotten/historique-de-la-population-de-communes" target="_blank" rel="noopener">Historique de la population de communes, par Alain Ottenheimer</a>
         — graphiques interactifs
       </li>
+      <li>
+        <a href="https://toulouse-dataviz.fr/" target="_blank" rel="noopener">Association Toulouse-DataViz</a> - Exposition <a href="https://exposition.toulouse-dataviz.fr/" target="_blank" rel="noopener"> DATAGRAFF 2025</a>
+        
+      </li>
     </ul>
   </section>
 
 </main>
 
 <footer>
-  Alain Ottenheimer
+  Alain Ottenheimer - 2026
 </footer>
 
 <script type="module">
@@ -326,6 +370,19 @@ new Runtime().module(define, name => {
   if (name === "viewof cc") return new Inspector(document.querySelector("#observablehq-viewof-cc-a47f6dcd"));
   if (name === "chart5") return new Inspector(document.querySelector("#observablehq-chart5-a47f6dcd"));
   return ["chart3","chart4","data_plot","data_plot_pop","Chart1","data_plot_dodge"].includes(name);
+});
+
+const toggleButton = document.getElementById("toggle-population");
+const populationSection = document.getElementById("explorer-population");
+
+toggleButton.addEventListener("click", () => {
+  const visible = populationSection.classList.toggle("visible");
+
+  toggleButton.setAttribute("aria-expanded", visible);
+
+  toggleButton.textContent = visible
+    ? "Masquer cette section"
+    : "Pour aller plus loin…";
 });
 </script>
 
