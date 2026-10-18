@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forest fires in France</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+  <style>
+    body {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px;
+      font-family: system-ui, sans-serif;
+      color: #222;
+    }
+    h1 { font-size: 1.4rem; margin: 0 0 12px; }
+    p { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>Forest fires in mainland France</h1>
+
+  <div id="observablehq-viewof-selected_surface-0e92fa1d"></div>
+  <div id="observablehq-viewof-selected_year-0e92fa1d"></div>
+  <div id="observablehq-chart-0e92fa1d"></div>
+  <p>Credit: <a href="https://observablehq.com/@aotten/incendies-de-forets-en-france@218">Incendies de forêts en France by Alain Ottenheimer</a></p>
+
+  <script type="module">
+    import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+    import define from "https://api.observablehq.com/@aotten/incendies-de-forets-en-france@218.js?v=4";
+    new Runtime().module(define, name => {
+      if (name === "viewof selected_surface") return new Inspector(document.querySelector("#observablehq-viewof-selected_surface-0e92fa1d"));
+      if (name === "viewof selected_year") return new Inspector(document.querySelector("#observablehq-viewof-selected_year-0e92fa1d"));
+      if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-0e92fa1d"));
+      return ["data"].includes(name);
+    });
+  </script>
+</body>
+</html>
