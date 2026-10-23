@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>PolitOscope 2026</title>
+    <link rel="icon" href="https://alainottenheimer.github.io/Projects/logo_ao_bleu.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Feuille de style de l'Inspector Observable -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+
+    <style>
+        /* Style de base (remplace Bootstrap) */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background-color: #f0f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            min-height: 100vh;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #85d6d2;
+            color: #f10a0a;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Section d'introduction
+           (font-size et margin explicites : le notebook injecte des règles globales h2 et p) */
+        .intro {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .intro h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #444;
+            margin: 0 0 10px 0;
+        }
+
+        .intro p {
+            font-size: 1rem;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Conteneur de la visualisation (remplace l'iframe) */
+        .viz-container {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background: #fff;
+        }
+
+        .viz-container > div {
+            margin-bottom: 12px;
+        }
+
+        .credit {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 20px 0 0 0;
+            text-align: left;
+        }
+
+        .credit a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+
+        .credit a:hover {
+            text-decoration: underline;
+        }
+
+        /* Message d'erreur de chargement */
+        #erreur-chargement {
+            display: none;
+            margin: 20px;
+            padding: 15px;
+            background: #fdecea;
+            color: #b71c1c;
+            border-radius: 6px;
+        }
+
+        /* Pied de page */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin: 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>
+            Le Polit<img src="https://alainottenheimer.github.io/Projects/politoscope/2009_circle.png" alt="logo" height="60">scope
+        </h1>
+    </header>
+
+    <section class="intro">
+        <h2>Découvrez l'évolution du vote des Français (1999 - 2024)</h2>
+        <p>Visualisation interactive des résultats des élections Européennes et Présidentielles.</p>
+    </section>
+
+    <div id="erreur-chargement">
+        Impossible de charger la visualisation. Ouvrez la console du navigateur (F12) pour voir le détail.
+    </div>
+
+    <div class="viz-container">
+        <!-- Emplacements des cellules du notebook Observable -->
+        <div id="observablehq-title-3b3afd78"></div>
+        <div id="observablehq-viewof-year-3b3afd78"></div>
+        <div id="observablehq-viewof-as-3b3afd78"></div>
+        <div id="observablehq-legend-3b3afd78"></div>
+        <div id="observablehq-viewof-titre-3b3afd78"></div>
+        <div id="observablehq-viewof-map-3b3afd78"></div>
+        <div id="observablehq-viewof-nodes-3b3afd78"></div>
+        <div id="observablehq-titre_chart-3b3afd78"></div>
+        <div id="observablehq-chart-3b3afd78"></div>
+     </div>
+
+    <footer>
+       <p>Crédit : <strong>Alain Ottenheimer</strong> - <a href="https://observablehq.com/@aotten/politoscope_2026" target="_blank">Politoscope_2026</a></p>
+        <!-- <p>© 2026 - Licence MIT - <a href="https://........." target="_blank">Code source sur GitHub</a></p> -->
+    </footer>
+</div>
+
+<script type="module">
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+
+// Association entre les cellules du notebook et les emplacements de la page
+const cellules = {
+    "title":        "#observablehq-title-3b3afd78",
+    "viewof year":  "#observablehq-viewof-year-3b3afd78",
+    "viewof as":    "#observablehq-viewof-as-3b3afd78",
+    "legend":       "#observablehq-legend-3b3afd78",
+    "viewof titre": "#observablehq-viewof-titre-3b3afd78",
+    "viewof map":   "#observablehq-viewof-map-3b3afd78",
+    "viewof nodes": "#observablehq-viewof-nodes-3b3afd78",
+    "titre_chart":  "#observablehq-titre_chart-3b3afd78",
+    "chart":        "#observablehq-chart-3b3afd78"
+};
+
+// Cellules nommées à calculer sans les afficher
+const cellulesInternes = ["year", "as", "year_select", "data_series", "processedData", "height_bar"];
+
+// Observateur « muet » : la cellule est calculée, mais rien n'est affiché
+const observateurMuet = (nom) => ({
+    pending() {},
+    fulfilled() {},
+    rejected(erreur) { console.error("[Erreur cellule]", nom || "(anonyme)", erreur); }
+});
+
+try {
+    const {default: define} = await import("https://api.observablehq.com/@aotten/politoscope_2026.js?v=4");
+
+    new Runtime().module(define, nom => {
+        // Cellule affichée : on la branche sur son emplacement
+        if (cellules[nom]) {
+            const element = document.querySelector(cellules[nom]);
+            if (element) return new Inspector(element);
+            console.warn("Emplacement introuvable pour la cellule :", nom);
+            return false;
+        }
+
+        // IMPORTANT : les cellules anonymes (nom === undefined) doivent être observées.
+        // C'est la cellule anonyme n° 35 du notebook qui réagit au choix de la commune
+        // (viewof as) : sans observateur, elle n'est jamais exécutée.
+        if (!nom) return observateurMuet(nom);
+
+        // Cellules internes nommées : calculées sans affichage
+        if (cellulesInternes.includes(nom)) return observateurMuet(nom);
+
+        return false;
+    });
+} catch (erreur) {
+    console.error("Erreur de chargement du notebook Observable :", erreur);
+    document.getElementById("erreur-chargement").style.display = "block";
+}
+</script>
+
+</body>
+</html>
