@@ -84,27 +84,27 @@
 
 <main>
   <div class="chart-card">
-    <div id="observablehq-Chart1-4c8f38fd"></div>
+    <div id="observablehq-Chart1-0d024b7c"></div>
   </div>
 
   <div class="chart-card">
-    <div id="observablehq-chart2-4c8f38fd"></div>
+    <div id="observablehq-chart2-0d024b7c"></div>
   </div>
 
   <div class="controls-card">
-    <div id="observablehq-viewof-cc-4c8f38fd"></div>
+    <div id="observablehq-viewof-cc-0d024b7c"></div>
   </div>
 
   <div class="chart-card">
-    <div id="observablehq-chart3-4c8f38fd"></div>
+    <div id="observablehq-chart3-0d024b7c"></div>
   </div>
 
   <div class="chart-card">
-    <div id="observablehq-chart4-4c8f38fd"></div>
+    <div id="observablehq-chart4-0d024b7c"></div>
   </div>
 
   <div class="chart-card">
-    <div id="observablehq-chart5-4c8f38fd"></div>
+    <div id="observablehq-chart5-0d024b7c"></div>
   </div>
 </main>
 
@@ -116,12 +116,12 @@
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
 import define from "https://api.observablehq.com/@aotten/naissances-dans-les-communes.js?v=4";
 new Runtime().module(define, name => {
-  if (name === "Chart1") return new Inspector(document.querySelector("#observablehq-Chart1-4c8f38fd"));
-  if (name === "chart2") return new Inspector(document.querySelector("#observablehq-chart2-4c8f38fd"));
-  if (name === "viewof cc") return new Inspector(document.querySelector("#observablehq-viewof-cc-4c8f38fd"));
-  if (name === "chart3") return new Inspector(document.querySelector("#observablehq-chart3-4c8f38fd"));
-  if (name === "chart4") return new Inspector(document.querySelector("#observablehq-chart4-4c8f38fd"));
-  if (name === "chart5") return new Inspector(document.querySelector("#observablehq-chart5-4c8f38fd"));
+  if (name === "Chart1") return new Inspector(document.querySelector("#observablehq-Chart1-0d024b7c"));
+  if (name === "chart2") return new Inspector(document.querySelector("#observablehq-chart2-0d024b7c"));
+  if (name === "viewof cc") return new Inspector(document.querySelector("#observablehq-viewof-cc-0d024b7c"));
+  if (name === "chart3") return new Inspector(document.querySelector("#observablehq-chart3-0d024b7c"));
+  if (name === "chart4") return new Inspector(document.querySelector("#observablehq-chart4-0d024b7c"));
+  if (name === "chart5") return new Inspector(document.querySelector("#observablehq-chart5-0d024b7c"));
   return ["data_plot","data_plot_pop","data_plot_dodge"].includes(name);
 });
 </script>
