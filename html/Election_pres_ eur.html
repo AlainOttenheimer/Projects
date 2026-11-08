@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trajectoires électorales</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      color: #333;
+    }
+
+    #observablehq-graphEur__-06bae593,
+    #observablehq-graphPres__-06bae593 {
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .credit {
+      margin-top: 30px;
+      font-size: 0.85em;
+      color: #777;
+    }
+
+    a {
+      color: #336699;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="observablehq-note-06bae593"></div>
+  <div id="observablehq-titre-06bae593"></div>
+  <div id="observablehq-viewof-name-06bae593"></div>
+  <div id="observablehq-graphEur__-06bae593"></div>
+  <div id="observablehq-graphPres__-06bae593"></div>
+
+  <p class="credit">
+    Credit:
+    <a href="https://observablehq.com/@aotten/trajectoires-electorales@1141">
+      Trajectoires Électorales by Alain Ottenheimer
+    </a>
+  </p>
+
+  <script type="module">
+    import {Runtime, Inspector}
+      from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+
+import define from "https://api.observablehq.com/@aotten/trajectoires-electorales.js?v=4";
+
+    new Runtime().module(define, name => {
+      if (name === "note")
+        return new Inspector(document.querySelector("#observablehq-note-06bae593"));
+
+      if (name === "titre")
+        return new Inspector(document.querySelector("#observablehq-titre-06bae593"));
+
+      if (name === "viewof name")
+        return new Inspector(document.querySelector("#observablehq-viewof-name-06bae593"));
+
+      if (name === "graphEur__")
+        return new Inspector(document.querySelector("#observablehq-graphEur__-06bae593"));
+
+      if (name === "graphPres__")
+        return new Inspector(document.querySelector("#observablehq-graphPres__-06bae593"));
+
+      return [
+        "graphEur_",
+        "graphPres_",
+        "data_graph",
+        "viewof extrait",
+        "data_graph_eur",
+        "data_graph_pres",
+        "population"
+      ].includes(name);
+    });
+  </script>
+
+</body>
+</html>
